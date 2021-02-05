@@ -17,5 +17,4 @@ steps:
         /bin/sh -c ls
     env:
       DOCKER_BUILDKIT: '1'
-      DOCKER_CLI_EXPERIMENTAL: enabled
     label: ':console:'
