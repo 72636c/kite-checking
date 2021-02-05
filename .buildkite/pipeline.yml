@@ -15,4 +15,6 @@ steps:
         --rm
         ${BUILDKITE_PIPELINE_SLUG}
         /bin/sh -c ls
+    env:
+      DOCKER_CLI_EXPERIMENTAL: enabled
     label: ':console:'
