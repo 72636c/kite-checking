@@ -2,5 +2,17 @@ steps:
   - agents:
       queue: ${BUILDKITE_AGENT_META_DATA_QUEUE:-default}
     commands:
-      - echo 'Hello world!'
+      - docker version
+      - touch .npmrc
+      - >-
+        docker build
+        --secret id=npm,src=./.npmrc
+        --tag ${BUILDKITE_PIPELINE_SLUG}
+        --target dev-deps
+        .
+      - >-
+        docker run
+        --rm
+        ${BUILDKITE_PIPELINE_SLUG}
+        /bin/sh -c ls
     label: ':console:'
